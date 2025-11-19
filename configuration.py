@@ -1,6 +1,7 @@
 class Configuration:
     gamma=0.99
     lr=5e-5
+    batch_size=64
     replay_capacity=10000
     replay_init_ratio=0.3
     train_env_steps=200000
