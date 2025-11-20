@@ -36,45 +36,45 @@ class DQNAgent(nn.Module):
 
         self.board_cnn = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=4, stride=1, padding=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Conv2d(32, 64, kernel_size=3, stride=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Conv2d(64, 64, kernel_size=3, stride=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Flatten()
         )
         # next block MLP + time for target network
         self.next_block_mlp = nn.Sequential(
             nn.Linear(5 * 7 + 1, 64),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Linear(64, 64),
-            nn.ReLU()
+            nn.SELU()
         )
         self.fc = nn.Sequential(
             nn.Linear(4800 + 64, 512),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Linear(512, self.num_actions)
         )
 
         self.target_board_cnn = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=4, stride=1, padding=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Conv2d(32, 64, kernel_size=3, stride=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Conv2d(64, 64, kernel_size=3, stride=1),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Flatten()
         )
         # next block MLP + time for target network
         self.target_next_block_mlp = nn.Sequential(
             nn.Linear(5 * 7 + 1, 64),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Linear(64, 64),
-            nn.ReLU()
+            nn.SELU()
         )
         self.target_fc = nn.Sequential(
             nn.Linear(4800 + 64, 512),
-            nn.ReLU(),
+            nn.SELU(),
             nn.Linear(512, self.num_actions)
         )
 

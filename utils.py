@@ -91,7 +91,7 @@ class Env:
         if np.any(self.board[:,10:]):
             return (self.board[4:,:10], self.onehot(self.block[:5]), self.step_count / 100), -60, True
         
-        reward = 0.1
+        reward = 10
         removed_lines = 0
         for i in range(size):
             if np.all(self.board[i,:10]):
@@ -114,8 +114,8 @@ class Env:
         return (self.board[4:,:10], self.onehot(self.block[:5]), self.step_count / 100)
     
     def init_level(self):
-        self.board[10:,:9] = 1
-        # pass
+        # self.board[10:,:9] = 1
+        pass
     
     def onehot(self, blocks):
         onehot_blocks = np.zeros((5,7))
