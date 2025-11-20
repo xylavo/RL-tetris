@@ -1,4 +1,4 @@
-from dqn_agent import DQNAgent
+from models.dqn_agent import DQNAgent
 import torch
 from torch import nn
 import random
@@ -11,9 +11,9 @@ from configuration import Configuration
 if __name__ == "__main__":
     env = create_env()
     dqn_agent = DQNAgent(env, Configuration)
-    dqn_agent.board_cnn.load_state_dict(torch.load("dqn_agent_latest_board_169500.pth"))
-    dqn_agent.next_block_mlp.load_state_dict(torch.load("dqn_agent_latest_next_block_169500.pth"))
-    dqn_agent.fc.load_state_dict(torch.load("dqn_agent_latest_fc_169500.pth"))
+    # dqn_agent.board_cnn.load_state_dict(torch.load("dqn_agent_latest_board_80000.pth"))
+    # dqn_agent.next_block_mlp.load_state_dict(torch.load("dqn_agent_latest_next_block_80000.pth"))
+    # dqn_agent.fc.load_state_dict(torch.load("dqn_agent_latest_fc_80000.pth"))
     state = env.reset()
 
     print(env.board[4:,:10])

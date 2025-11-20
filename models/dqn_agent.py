@@ -143,7 +143,7 @@ class DQNAgent(nn.Module):
         dones_tensor = torch.tensor(dones).float()
 
         q_values = self.forward(states_board_tensor, states_next_block_tensor, states_time_tensor)
-        next_q_values = self.forward_target_network(states_board_tensor, states_next_block_tensor, states_time_tensor)
+        next_q_values = self.forward_target_network(next_states_board_tensor, next_states_next_block_tensor, next_states_time_tensor)
 
         chosen_q_values = q_values.gather(dim=-1, index=actions_tensor.reshape(-1,1)).reshape(-1)
         target_q_values = rewards_tensor + self.config.gamma * (1 - dones_tensor) * next_q_values.max(dim=-1).values
