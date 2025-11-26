@@ -1,4 +1,4 @@
-from models.dqn_agent import DQNAgent
+from model_dqn_agent import DQNAgent
 import torch
 from torch import nn
 import random
